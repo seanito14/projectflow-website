@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProjectFlow - Premium Work Manager</title>
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar glass-panel">
+            <div class="brand">
+                <div class="brand-icon"><i class="fa-solid fa-bolt"></i></div>
+                <h2>ProjectFlow</h2>
+            </div>
+            <nav class="project-nav">
+                <h3>YOUR PROJECTS</h3>
+                <ul id="project-list">
+                    <!-- Projects injected via JS -->
+                </ul>
+                <button id="add-project-btn" class="btn-ghost">
+                    <i class="fa-solid fa-plus"></i> New Project
+                </button>
+            </nav>
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=Sean&background=6366f1&color=fff" alt="User Avatar" class="avatar">
+                <div class="user-info">
+                    <span class="user-name">Xybersean</span>
+                    <span class="user-role">Developer</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header glass-panel">
+                <div class="header-left">
+                    <h1 id="current-project-title">Select a Project</h1>
+                    <p class="subtitle" id="current-project-desc">Manage your tasks and track progress</p>
+                </div>
+                <div class="header-right">
+                    <div class="progress-container">
+                        <div class="progress-text">
+                            <span>Progress</span>
+                            <span id="progress-percentage">0%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" id="progress-bar-fill"></div>
+                        </div>
+                    </div>
+                    <button id="add-task-btn" class="btn-primary" disabled>
+                        <i class="fa-solid fa-plus"></i> Add Task
+                    </button>
+                    <button id="delete-project-btn" class="btn-icon" data-tooltip="Delete Project" disabled>
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Kanban Board -->
+            <div class="kanban-board">
+                <!-- Column: To Do -->
+                <div class="kanban-column" id="col-todo" data-status="todo">
+                    <div class="column-header">
+                        <h2>To Do <span class="task-count">0</span></h2>
+                        <div class="column-accent accent-blue"></div>
+                    </div>
+                    <div class="task-list dropzone">
+                        <!-- Tasks go here -->
+                    </div>
+                </div>
+
+                <!-- Column: In Progress -->
+                <div class="kanban-column" id="col-inprogress" data-status="inprogress">
+                    <div class="column-header">
+                        <h2>In Progress <span class="task-count">0</span></h2>
+                        <div class="column-accent accent-purple"></div>
+                    </div>
+                    <div class="task-list dropzone">
+                        <!-- Tasks go here -->
+                    </div>
+                </div>
+
+                <!-- Column: Done -->
+                <div class="kanban-column" id="col-done" data-status="done">
+                    <div class="column-header">
+                        <h2>Done <span class="task-count">0</span></h2>
+                        <div class="column-accent accent-green"></div>
+                    </div>
+                    <div class="task-list dropzone">
+                        <!-- Tasks go here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <!-- Add Project Modal -->
+    <div class="modal-overlay" id="project-modal">
+        <div class="modal glass-panel">
+            <div class="modal-header">
+                <h3>Create New Project</h3>
+                <button class="close-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="project-name">Project Name</label>
+                    <input type="text" id="project-name" placeholder="e.g., Website Redesign" autocomplete="off">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-ghost cancel-modal">Cancel</button>
+                <button class="btn-primary" id="save-project-btn">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Task Modal -->
+    <div class="modal-overlay" id="task-modal">
+        <div class="modal glass-panel">
+            <div class="modal-header">
+                <h3>Add New Task</h3>
+                <button class="close-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="task-title">Task Title</label>
+                    <input type="text" id="task-title" placeholder="What needs to be done?" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="task-desc">Description (Optional)</label>
+                    <textarea id="task-desc" rows="3" placeholder="Add some details..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-ghost cancel-modal">Cancel</button>
+                <button class="btn-primary" id="save-task-btn">Add Task</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
