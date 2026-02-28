@@ -30,10 +30,15 @@ Run the client:
 python main.py
 ```
 
+*(Or use `MyMistral` if you set up the alias)*
+
 ### Commands
 
-- `exit` or `quit`: Close the client.
-- `clear`: Reset the conversation history.
+- `/help`: Detailed help instructions.
+- `/clear`: Reset the conversation history and tokens.
+- `/stats`: View your current session API token usage.
+- `/save_chat`: Download your current chat history to `chat_log.json`.
+- `/exit` or `/quit`: Close the client.
 
 ### App Builder Flow
 
